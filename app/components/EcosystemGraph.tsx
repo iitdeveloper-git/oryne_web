@@ -25,7 +25,7 @@ interface EcosystemNode {
 const nodes: EcosystemNode[] = [
   {
     id: "ai-core",
-    title: "AI Core",
+    title: "ORYNE BRAIN",
     Icon: CpuChipIcon,
     description: "Central Intelligence Hub",
     color: "from-purple-500 to-indigo-600",
@@ -41,7 +41,7 @@ const nodes: EcosystemNode[] = [
   },
   {
     id: "erp",
-    title: "ERP System",
+    title: "COMMAND CENTER",
     Icon: AcademicCapIcon,
     description: "Enterprise Resource Planning",
     color: "from-blue-500 to-cyan-600",
@@ -49,7 +49,7 @@ const nodes: EcosystemNode[] = [
   },
   {
     id: "lms",
-    title: "LMS",
+    title: "LEARN SPHERE",
     Icon: BookOpenIcon,
     description: "Learning Management System",
     color: "from-green-500 to-emerald-600",
@@ -57,7 +57,7 @@ const nodes: EcosystemNode[] = [
   },
   {
     id: "estore",
-    title: "E-Store",
+    title: "CAMPUS MART",
     Icon: ShoppingBagIcon,
     description: "E-Commerce Platform",
     color: "from-orange-500 to-red-600",
@@ -65,7 +65,7 @@ const nodes: EcosystemNode[] = [
   },
   {
     id: "hostel",
-    title: "Hostel",
+    title: "STAY HUB",
     Icon: HomeIcon,
     description: "Accommodation Management",
     color: "from-pink-500 to-rose-600",
@@ -73,7 +73,7 @@ const nodes: EcosystemNode[] = [
   },
   {
     id: "library",
-    title: "Library",
+    title: "KNOWLEDGE VAULT",
     Icon: BuildingLibraryIcon,
     description: "Digital & Physical Resources",
     color: "from-teal-500 to-cyan-600",
@@ -81,7 +81,7 @@ const nodes: EcosystemNode[] = [
   },
   {
     id: "transport",
-    title: "Transport",
+    title: "ROUTE MASTER",
     Icon: TruckIcon,
     description: "Fleet & Logistics",
     color: "from-yellow-500 to-amber-600",
@@ -89,7 +89,7 @@ const nodes: EcosystemNode[] = [
   },
   {
     id: "events",
-    title: "Events",
+    title: "CAMPUS PULSE",
     Icon: CalendarDaysIcon,
     description: "Event Management",
     color: "from-violet-500 to-purple-600",
@@ -109,6 +109,7 @@ const EcosystemGraph = () => {
     hostel: 3,
     library: 4,
     transport: 5,
+    events: 6,
   };
 
   // Handle node click to navigate to ModulesShowcase

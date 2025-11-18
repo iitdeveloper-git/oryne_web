@@ -50,7 +50,7 @@ const ModulesShowcase = () => {
   const modules = [
     {
       id: "erp",
-      title: "ERP System",
+      title: "COMMAND CENTER",
       icon: AcademicCapIcon,
       color: "from-blue-500 to-cyan-500",
       description:
@@ -68,7 +68,7 @@ const ModulesShowcase = () => {
     },
     {
       id: "lms",
-      title: "Learning Management System",
+      title: "LEARN SPHERE",
       icon: BookOpenIcon,
       color: "from-purple-500 to-pink-500",
       description: "Advanced LMS with AI-powered personalized learning paths",
@@ -85,7 +85,7 @@ const ModulesShowcase = () => {
     },
     {
       id: "estore",
-      title: "E-Commerce Store",
+      title: "CAMPUS MART",
       icon: ShoppingBagIcon,
       color: "from-green-500 to-teal-500",
       description:
@@ -103,7 +103,7 @@ const ModulesShowcase = () => {
     },
     {
       id: "hostel",
-      title: "Hostel Management",
+      title: "STAY HUB",
       icon: HomeIcon,
       color: "from-yellow-500 to-orange-500",
       description: "Complete hostel and accommodation management solution",
@@ -120,7 +120,7 @@ const ModulesShowcase = () => {
     },
     {
       id: "library",
-      title: "Library System",
+      title: "KNOWLEDGE VAULT",
       icon: BuildingLibraryIcon,
       color: "from-indigo-500 to-purple-500",
       description:
@@ -138,7 +138,7 @@ const ModulesShowcase = () => {
     },
     {
       id: "transport",
-      title: "Transport & Logistics",
+      title: "ROUTE MASTER",
       icon: TruckIcon,
       color: "from-red-500 to-pink-500",
       description: "Smart transportation management with real-time tracking",
@@ -152,6 +152,23 @@ const ModulesShowcase = () => {
       ],
       image: "/api/placeholder/600/400",
       stats: { vehicles: "500+", routes: "200+", students: "30K+" },
+    },
+    {
+      id: "events",
+      title: "CAMPUS PULSE",
+      icon: CalendarDaysIcon,
+      color: "from-violet-500 to-purple-500",
+      description: "Complete event management system for campus activities",
+      features: [
+        "Event Planning & Scheduling",
+        "Registration & Ticketing",
+        "Venue Management",
+        "Attendance Tracking",
+        "Photo & Media Gallery",
+        "Calendar Integration",
+      ],
+      image: "/api/placeholder/600/400",
+      stats: { events: "1K+", attendees: "50K+", satisfaction: "90%" },
     },
   ];
 
