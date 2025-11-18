@@ -8,6 +8,7 @@ import {
   GlobeAltIcon,
   ChartBarIcon,
 } from "@heroicons/react/24/outline";
+import ContactFormModal from "./ContactFormModal";
 
 // Animated Counter Component with Milestones
 const AnimatedCounter = ({
@@ -101,6 +102,8 @@ const AnimatedCounter = ({
 };
 
 const Statistics = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const stats = [
     {
       icon: UsersIcon,
@@ -159,8 +162,14 @@ const Statistics = () => {
   };
 
   return (
-    <section className="section-padding bg-white">
-      <div className="container-custom">
+    <section className="section-padding bg-gradient-to-br from-indigo-50 via-white to-pink-50 relative overflow-hidden">
+      {/* Decorative elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-20 -left-20 w-72 h-72 bg-indigo-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
+        <div className="absolute top-40 -right-20 w-72 h-72 bg-pink-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
+      </div>
+
+      <div className="container-custom relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -255,6 +264,7 @@ const Statistics = () => {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              onClick={() => setIsModalOpen(true)}
               className="btn-primary text-lg px-8 py-4"
             >
               Request Demo
@@ -262,6 +272,12 @@ const Statistics = () => {
           </div>
         </motion.div>
       </div>
+
+      {/* Contact Form Modal */}
+      <ContactFormModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
     </section>
   );
 };

@@ -1,10 +1,13 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowRightIcon, SparklesIcon } from "@heroicons/react/24/outline";
+import ContactFormModal from "./ContactFormModal";
 
 const CTA = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <section className="section-padding bg-gradient-to-br from-secondary-900 via-secondary-800 to-secondary-900 text-white relative overflow-hidden">
       {/* Background Effects */}
@@ -98,6 +101,7 @@ const CTA = () => {
               }}
               whileTap={{ scale: 0.95 }}
               transition={{ type: "spring", stiffness: 400, damping: 17 }}
+              onClick={() => setIsModalOpen(true)}
               className="bg-gradient-to-r from-primary-500 to-accent-500 hover:from-primary-600 hover:to-accent-600 text-white font-semibold py-4 px-8 rounded-lg text-lg flex items-center gap-2 group transition-all duration-300"
             >
               Get Started
@@ -108,6 +112,7 @@ const CTA = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               transition={{ type: "spring", stiffness: 400, damping: 17 }}
+              onClick={() => setIsModalOpen(true)}
               className="border-2 border-secondary-400 hover:border-primary-400 text-secondary-200 hover:text-primary-400 font-semibold py-4 px-8 rounded-lg text-lg transition-all duration-300"
             >
               Schedule a Demo
@@ -142,6 +147,12 @@ const CTA = () => {
           </motion.div>
         </motion.div>
       </div>
+
+      {/* Contact Form Modal */}
+      <ContactFormModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
     </section>
   );
 };

@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { createPortal } from "react-dom";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import {
   BuildingOffice2Icon,
@@ -33,18 +34,48 @@ const ContactFormModal: React.FC<ContactFormModalProps> = ({
   const [submitStatus, setSubmitStatus] = useState<
     "idle" | "success" | "error"
   >("idle");
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Prevent body scroll when modal is open
   useEffect(() => {
     if (isOpen) {
+      // Save current scroll position
+      const scrollY = window.scrollY;
+      document.body.dataset.scrollY = scrollY.toString();
+
+      // Fix body position
+      document.body.style.position = "fixed";
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.width = "100%";
       document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
+    } else if (document.body.style.position === "fixed") {
+      // Get saved scroll position
+      const scrollY = document.body.dataset.scrollY || "0";
+
+      // Reset body styles
+      document.body.style.position = "";
+      document.body.style.top = "";
+      document.body.style.width = "";
+      document.body.style.overflow = "";
+
+      // Restore scroll position
+      window.scrollTo(0, parseInt(scrollY));
     }
 
     // Cleanup on unmount
     return () => {
-      document.body.style.overflow = "unset";
+      if (document.body.style.position === "fixed") {
+        const scrollY = document.body.dataset.scrollY || "0";
+        document.body.style.position = "";
+        document.body.style.top = "";
+        document.body.style.width = "";
+        document.body.style.overflow = "";
+        window.scrollTo(0, parseInt(scrollY));
+      }
     };
   }, [isOpen]);
 
@@ -72,26 +103,39 @@ const ContactFormModal: React.FC<ContactFormModalProps> = ({
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate API call - Replace with your actual API endpoint
     try {
-      await new Promise((resolve) => setTimeout(resolve, 2000));
-      console.log("Form submitted:", formData);
-      setSubmitStatus("success");
+      const response = await fetch("/api/send-email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
 
-      // Reset form after success
-      setTimeout(() => {
-        setFormData({
-          name: "",
-          email: "",
-          phone: "",
-          institution: "",
-          institutionType: "",
-          message: "",
-        });
-        setSubmitStatus("idle");
-        onClose();
-      }, 2000);
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        setSubmitStatus("success");
+
+        // Reset form after success
+        setTimeout(() => {
+          setFormData({
+            name: "",
+            email: "",
+            phone: "",
+            institution: "",
+            institutionType: "",
+            message: "",
+          });
+          setSubmitStatus("idle");
+          onClose();
+        }, 2000);
+      } else {
+        setSubmitStatus("error");
+        setTimeout(() => setSubmitStatus("idle"), 3000);
+      }
     } catch (error) {
+      console.error("Error submitting form:", error);
       setSubmitStatus("error");
       setTimeout(() => setSubmitStatus("idle"), 3000);
     } finally {
@@ -99,28 +143,33 @@ const ContactFormModal: React.FC<ContactFormModalProps> = ({
     }
   };
 
-  return (
+  const modalContent = (
     <AnimatePresence>
       {isOpen && (
-        <>
+        <div className="fixed inset-0 z-[9999]" style={{ zIndex: 9999 }}>
           {/* Backdrop */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            transition={{ duration: 0.15 }}
             onClick={onClose}
-            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50"
+            className="absolute inset-0 bg-black/60 backdrop-blur-sm"
           />
 
           {/* Modal */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 overflow-y-auto"
+          <div
+            className="absolute inset-0 flex items-center justify-center p-4 overflow-y-auto"
+            onClick={onClose}
           >
-            <div className="bg-white rounded-3xl shadow-2xl max-w-2xl w-full my-8">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              transition={{ duration: 0.2, ease: "easeOut" }}
+              className="bg-white rounded-3xl shadow-2xl max-w-2xl w-full my-8 relative"
+              onClick={(e) => e.stopPropagation()}
+            >
               {/* Header */}
               <div className="relative bg-gradient-to-r from-primary-600 to-accent-600 text-white p-6 rounded-t-3xl">
                 <button
@@ -316,12 +365,16 @@ const ContactFormModal: React.FC<ContactFormModalProps> = ({
                   By submitting, you agree to our Terms & Privacy Policy.
                 </p>
               </form>
-            </div>
-          </motion.div>
-        </>
+            </motion.div>
+          </div>
+        </div>
       )}
     </AnimatePresence>
   );
+
+  if (!mounted) return null;
+
+  return createPortal(modalContent, document.body);
 };
 
 export default ContactFormModal;

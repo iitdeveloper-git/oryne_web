@@ -41,8 +41,10 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
       </head>
-      <body className="font-sans antialiased bg-white text-secondary-900">
-        <div className="relative min-h-screen">{children}</div>
+      <body className="font-sans antialiased bg-white text-secondary-900 overflow-x-hidden">
+        <div className="relative min-h-screen overflow-x-hidden">
+          {children}
+        </div>
       </body>
     </html>
   );
