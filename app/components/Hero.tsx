@@ -59,23 +59,6 @@ const Hero = () => {
           - Floating Icons (complex animations)
           - Grid Pattern (unused visual)
       */}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay, duration: 0.4 }}
-        >
-          <motion.div
-            animate={{
-              y: [0, -15, 0],
-            }}
-            transition={{
-              duration: 5,
-              repeat: Infinity,
-              delay: delay,
-            }}
-          >
-            <Icon className="w-16 h-16 md:w-20 md:h-20" />
-          </motion.div>
-        </motion.div>
-      ))}
 
       {/* Main Content */}
       <div className="container-custom relative z-10 px-6 md:px-12">
