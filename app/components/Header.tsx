@@ -20,9 +20,9 @@ const Header = () => {
 
   const navItems = [
     { name: "Features", href: "#features" },
-    { name: "Modules", href: "#modules" },
-    { name: "Pricing", href: "#pricing" },
-    { name: "About", href: "#about" },
+    { name: "Solutions", href: "#solutions" },
+    { name: "Blogs", href: "/blogs" },
+    { name: "About", href: "/about" },
     { name: "Contact", href: "#contact" },
   ];
 
@@ -40,9 +40,10 @@ const Header = () => {
       <nav className="container-custom">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <motion.div
+          <motion.a
+            href="/"
             whileHover={{ scale: 1.05 }}
-            className="flex items-center space-x-2"
+            className="flex items-center space-x-2 cursor-pointer"
           >
             <div className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-r from-primary-600 to-accent-600 rounded-lg flex items-center justify-center">
               <span className="text-white font-bold text-lg md:text-xl">O</span>
@@ -50,7 +51,7 @@ const Header = () => {
             <span className="text-xl md:text-2xl font-bold gradient-text">
               Oryne
             </span>
-          </motion.div>
+          </motion.a>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">

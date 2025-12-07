@@ -95,25 +95,11 @@ const CTA = () => {
             className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12"
           >
             <motion.button
-              whileHover={{
-                scale: 1.05,
-                boxShadow: "0 20px 40px rgba(14, 165, 233, 0.3)",
-              }}
-              whileTap={{ scale: 0.95 }}
-              transition={{ type: "spring", stiffness: 400, damping: 17 }}
-              onClick={() => setIsModalOpen(true)}
-              className="bg-gradient-to-r from-primary-500 to-accent-500 hover:from-primary-600 hover:to-accent-600 text-white font-semibold py-4 px-8 rounded-lg text-lg flex items-center gap-2 group transition-all duration-300"
-            >
-              Get Started
-              <ArrowRightIcon className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </motion.button>
-
-            <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               transition={{ type: "spring", stiffness: 400, damping: 17 }}
               onClick={() => setIsModalOpen(true)}
-              className="border-2 border-secondary-400 hover:border-primary-400 text-secondary-200 hover:text-primary-400 font-semibold py-4 px-8 rounded-lg text-lg transition-all duration-300"
+              className="bg-gradient-to-r from-primary-500 to-accent-500 hover:from-primary-600 hover:to-accent-600 text-white font-semibold py-4 px-8 rounded-lg text-lg transition-all duration-300"
             >
               Schedule a Demo
             </motion.button>

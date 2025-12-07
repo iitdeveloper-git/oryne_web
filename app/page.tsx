@@ -1,59 +1,29 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import React from "react";
 import Header from "./components/Header";
-import Hero from "./components/Hero";
+import HeroSimple from "./components/HeroSimple";
+import UseCases from "./components/UseCases";
 import EcosystemSection from "./components/EcosystemSection";
 import Features from "./components/Features";
-import UseCases from "./components/UseCases";
 import IntegrationPartners from "./components/IntegrationPartners";
-import Resources from "./components/Resources";
-import LiveChatWidget from "./components/LiveChatWidget";
 import ModulesShowcase from "./components/ModulesShowcase";
 import Statistics from "./components/Statistics";
 import Testimonials from "./components/Testimonials";
 import CTA from "./components/CTA";
 import Footer from "./components/Footer";
+import LiveChatWidget from "./components/LiveChatWidget";
 
 export default function Home() {
-  const [scrollY, setScrollY] = useState(0);
-
-  useEffect(() => {
-    let ticking = false;
-
-    const handleScroll = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          setScrollY(window.scrollY);
-          ticking = false;
-        });
-        ticking = true;
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   return (
     <div className="relative overflow-x-hidden">
-      {/* Background particles */}
-      <div className="particles-bg">
-        <div className="particle"></div>
-        <div className="particle"></div>
-        <div className="particle"></div>
-        <div className="particle"></div>
-        <div className="particle"></div>
-      </div>
-
       {/* Header */}
       <Header />
 
       {/* Main Content */}
       <main>
-        {/* Hero Section */}
-        <Hero />
+        {/* Hero Section - Simplified for mobile performance */}
+        <HeroSimple />
 
         {/* Use Cases Section - Perfect for Every Educational Setting */}
         <UseCases />
@@ -62,60 +32,22 @@ export default function Home() {
         <EcosystemSection />
 
         {/* Features Section - Powerful Features for Modern Education */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2, margin: "0px 0px -100px 0px" }}
-          transition={{ duration: 0.4, ease: "easeOut" }}
-        >
-          <Features />
-        </motion.div>
+        <Features />
 
         {/* Integration Partners Section */}
         <IntegrationPartners />
 
-        {/* Resources Section */}
-        <Resources />
-
-        {/* Modules Showcase */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2, margin: "0px 0px -100px 0px" }}
-          transition={{ duration: 0.4, ease: "easeOut" }}
-        >
-          <ModulesShowcase />
-        </motion.div>
+        {/* Solutions Showcase */}
+        <ModulesShowcase />
 
         {/* Statistics */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2, margin: "0px 0px -100px 0px" }}
-          transition={{ duration: 0.4, ease: "easeOut" }}
-        >
-          <Statistics />
-        </motion.div>
+        <Statistics />
 
         {/* Testimonials */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2, margin: "0px 0px -100px 0px" }}
-          transition={{ duration: 0.4, ease: "easeOut" }}
-        >
-          <Testimonials />
-        </motion.div>
+        <Testimonials />
 
         {/* CTA Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2, margin: "0px 0px -100px 0px" }}
-          transition={{ duration: 0.4, ease: "easeOut" }}
-        >
-          <CTA />
-        </motion.div>
+        <CTA />
       </main>
 
       {/* Footer */}
