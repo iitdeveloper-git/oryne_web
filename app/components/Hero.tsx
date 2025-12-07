@@ -2,34 +2,14 @@
 
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { ArrowRightIcon, PlayIcon } from "@heroicons/react/24/outline";
-import {
-  AcademicCapIcon,
-  BookOpenIcon,
-  BuildingLibraryIcon,
-  ShoppingBagIcon,
-  HomeIcon,
-  TruckIcon,
-} from "@heroicons/react/24/solid";
-import { Parallax } from "./Parallax";
-import LightweightGradient from "./LightweightGradient";
+import { ArrowRightIcon } from "@heroicons/react/24/outline";
 import ContactFormModal from "./ContactFormModal";
 
 const Hero = () => {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
-  const [scrollY, setScrollY] = useState(0);
   const [institutionText, setInstitutionText] = useState("Institution");
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  // Auto-rotate institution text
+  // Auto-rotate institution text - optimized
   useEffect(() => {
     const institutions = [
       "Institution",
@@ -50,110 +30,44 @@ const Hero = () => {
   }, []);
 
   const fadeInUp = {
-    initial: { opacity: 0, y: 60 },
+    initial: { opacity: 0, y: 20 },
     animate: { opacity: 1, y: 0 },
   };
 
-  const fadeInUpTransition = { duration: 0.6 };
+  const fadeInUpTransition = { duration: 0.3 };
 
   const staggerContainer = {
     animate: {
       transition: {
-        staggerChildren: 0.1,
+        staggerChildren: 0.08,
       },
     },
   };
 
-  const floatingIcons = [
-    { Icon: AcademicCapIcon, position: { top: "20%", left: "10%" }, delay: 0 },
-    { Icon: BookOpenIcon, position: { top: "30%", right: "15%" }, delay: 0.5 },
-    {
-      Icon: BuildingLibraryIcon,
-      position: { bottom: "30%", left: "8%" },
-      delay: 1,
-    },
-    {
-      Icon: ShoppingBagIcon,
-      position: { top: "60%", right: "10%" },
-      delay: 1.5,
-    },
-    { Icon: HomeIcon, position: { bottom: "20%", right: "20%" }, delay: 2 },
-    { Icon: TruckIcon, position: { top: "50%", left: "5%" }, delay: 2.5 },
-  ];
-
   return (
-    <section className="relative min-h-screen flex items-center justify-center pt-32 md:pt-40 pb-16 md:pb-20 overflow-x-hidden">
-      {/* Enhanced Gradient Background */}
+    <section className="relative min-h-screen flex items-center justify-center pt-32 md:pt-40 pb-16 md:pb-20 overflow-hidden">
+      {/* Simplified Gradient Background - Pure CSS for mobile performance */}
       <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50">
-        {/* Animated gradient orbs */}
-        <motion.div
-          className="absolute top-0 left-0 w-[800px] h-[800px] bg-gradient-to-br from-blue-400/30 to-cyan-400/30 rounded-full blur-3xl"
-          animate={{
-            x: [0, 100, 0],
-            y: [0, 50, 0],
-            scale: [1, 1.2, 1],
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
-        <motion.div
-          className="absolute top-1/4 right-0 w-[600px] h-[600px] bg-gradient-to-br from-purple-400/30 to-pink-400/30 rounded-full blur-3xl"
-          animate={{
-            x: [0, -100, 0],
-            y: [0, 100, 0],
-            scale: [1, 1.1, 1],
-          }}
-          transition={{
-            duration: 18,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
-        <motion.div
-          className="absolute bottom-0 left-1/3 w-[700px] h-[700px] bg-gradient-to-br from-indigo-400/20 to-purple-400/20 rounded-full blur-3xl"
-          animate={{
-            x: [0, -50, 0],
-            y: [0, -50, 0],
-            scale: [1, 1.15, 1],
-          }}
-          transition={{
-            duration: 22,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
+        {/* Static gradient orbs - CSS only, no JS animations */}
+        <div className="absolute top-0 left-0 w-full md:w-[800px] h-full md:h-[800px] bg-gradient-to-br from-blue-400/20 to-cyan-400/20 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 right-0 w-full md:w-[600px] h-full md:h-[600px] bg-gradient-to-br from-purple-400/20 to-pink-400/20 rounded-full blur-3xl"></div>
       </div>
 
-      {/* Lightweight CSS Gradient Background */}
-      <LightweightGradient />
-
-      {/* Grid Pattern Overlay */}
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAxOGMtOS45NDEgMC0xOCA4LjA1OS0xOCAxOHM4LjA1OSAxOCAxOCAxOCAxOC04LjA1OSAxOC0xOC04LjA1OS0xOC0xOC0xOHoiIHN0cm9rZT0iIzk0YTNiOCIgc3Ryb2tlLXdpZHRoPSIwLjUiIG9wYWNpdHk9IjAuMiIvPjwvZz48L3N2Zz4=')] opacity-30"></div>
-
-      {/* Background Elements with Subtle Parallax */}
-      <Parallax speed={0.5} className="absolute inset-0">
-        <div className="absolute inset-0 bg-hero-pattern opacity-20"></div>
-      </Parallax>
-
-      {/* Simplified Floating Icons - Only 3 for performance */}
-      {floatingIcons.slice(0, 3).map(({ Icon, position, delay }, index) => (
-        <motion.div
-          key={index}
-          className="absolute text-primary-300/20"
-          style={position}
-          initial={{ opacity: 0, scale: 0 }}
+      {/* Removed heavy components for mobile performance:
+          - LightweightGradient (heavy JS)
+          - Parallax (scroll handler)
+          - Floating Icons (complex animations)
+          - Grid Pattern (unused visual)
+      */}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay, duration: 0.6 }}
+          transition={{ delay, duration: 0.4 }}
         >
           <motion.div
             animate={{
-              y: [0, -20, 0],
+              y: [0, -15, 0],
             }}
             transition={{
-              duration: 4,
+              duration: 5,
               repeat: Infinity,
               delay: delay,
             }}

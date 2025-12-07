@@ -258,18 +258,6 @@ const EcosystemGraph = () => {
             const toPos = getNodePosition(toIndex, nodes.length);
             const isActive = isConnectionActive(node.id, connId);
 
-            // Debug logging for AI Core to ERP connection
-            if (node.id === "ai-core" && connId === "erp") {
-              console.log("AI Core to ERP Line Debug:", {
-                fromPos,
-                toPos,
-                isActive,
-                fromNode: node.id,
-                toNode: connId,
-                toIndex,
-              });
-            }
-
             return (
               <motion.line
                 key={`${node.id}-${connId}`}

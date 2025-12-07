@@ -200,9 +200,9 @@ const ModulesShowcase = () => {
             </span>
           </h2>
           <p className="text-lg text-secondary-300 max-w-3xl mx-auto">
-            Six powerful solutions working together to transform your educational
-            institution. From student management to transportation logistics,
-            we've got you covered.
+            Six powerful solutions working together to transform your
+            educational institution. From student management to transportation
+            logistics, we've got you covered.
           </p>
         </motion.div>
 
@@ -230,10 +230,10 @@ const ModulesShowcase = () => {
         <AnimatePresence mode="wait">
           <motion.div
             key={activeModule}
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.5 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.3 }}
             className="grid lg:grid-cols-2 gap-12 items-center"
           >
             {/* Content */}

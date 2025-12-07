@@ -19,13 +19,15 @@ export default function AboutPage() {
     {
       icon: LightBulbIcon,
       title: "Innovation First",
-      description: "Constantly pushing boundaries to deliver cutting-edge solutions",
+      description:
+        "Constantly pushing boundaries to deliver cutting-edge solutions",
       gradient: "from-yellow-500 to-orange-500",
     },
     {
       icon: HeartIcon,
       title: "Student-Centric",
-      description: "Every decision we make puts students' success at the forefront",
+      description:
+        "Every decision we make puts students' success at the forefront",
       gradient: "from-red-500 to-pink-500",
     },
     {
@@ -37,7 +39,8 @@ export default function AboutPage() {
     {
       icon: TrophyIcon,
       title: "Excellence",
-      description: "Committed to delivering the highest quality in everything we do",
+      description:
+        "Committed to delivering the highest quality in everything we do",
       gradient: "from-purple-500 to-indigo-500",
     },
   ];
@@ -87,8 +90,9 @@ export default function AboutPage() {
               </h1>
 
               <p className="text-xl text-gray-600 leading-relaxed mb-8">
-                We believe that every educational institution deserves access to world-class technology 
-                that empowers educators, engages students, and streamlines operations.
+                We believe that every educational institution deserves access to
+                world-class technology that empowers educators, engages
+                students, and streamlines operations.
               </p>
             </motion.div>
           </div>
@@ -112,13 +116,15 @@ export default function AboutPage() {
                 Our Mission
               </h2>
               <p className="text-xl text-gray-300 leading-relaxed mb-6">
-                To revolutionize educational management by providing an intelligent, 
-                integrated platform that adapts to the unique needs of every institution, 
-                enabling them to focus on what matters most—delivering exceptional education.
+                To revolutionize educational management by providing an
+                intelligent, integrated platform that adapts to the unique needs
+                of every institution, enabling them to focus on what matters
+                most—delivering exceptional education.
               </p>
               <p className="text-lg text-gray-400">
-                Founded in 2020, Oryne has grown from a simple vision to a comprehensive 
-                ecosystem trusted by institutions across the globe.
+                Founded in 2020, Oryne has grown from a simple vision to a
+                comprehensive ecosystem trusted by institutions across the
+                globe.
               </p>
             </motion.div>
           </div>
@@ -152,7 +158,9 @@ export default function AboutPage() {
                   whileHover={{ y: -10 }}
                   className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100"
                 >
-                  <div className={`inline-flex p-4 bg-gradient-to-br ${value.gradient} rounded-xl mb-4`}>
+                  <div
+                    className={`inline-flex p-4 bg-gradient-to-br ${value.gradient} rounded-xl mb-4`}
+                  >
                     <value.icon className="w-8 h-8 text-white" />
                   </div>
                   <h3 className="text-2xl font-bold text-gray-900 mb-3">
@@ -229,10 +237,11 @@ export default function AboutPage() {
                 Global Reach, Local Touch
               </h2>
               <p className="text-xl text-gray-300 leading-relaxed">
-                With presence in over 50 countries, we understand that every educational 
-                system is unique. Our platform adapts to local requirements while 
-                maintaining global standards of excellence. From small coaching centers 
-                to large universities, we're proud to serve institutions of all sizes.
+                With presence in over 50 countries, we understand that every
+                educational system is unique. Our platform adapts to local
+                requirements while maintaining global standards of excellence.
+                From small coaching centers to large universities, we're proud
+                to serve institutions of all sizes.
               </p>
             </motion.div>
           </div>
