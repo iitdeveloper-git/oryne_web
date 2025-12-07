@@ -119,16 +119,16 @@ const EcosystemGraph = () => {
       return;
     }
 
-    // For other nodes, navigate to modules section
+    // For other nodes, navigate to solutions section
     const moduleIndex = nodeToModuleMap[nodeId];
     if (moduleIndex !== undefined) {
       // Store the module index in sessionStorage
       sessionStorage.setItem("selectedModule", moduleIndex.toString());
 
-      // Scroll to modules section
-      const modulesSection = document.getElementById("modules");
-      if (modulesSection) {
-        modulesSection.scrollIntoView({ behavior: "smooth", block: "start" });
+      // Scroll to solutions section
+      const solutionsSection = document.getElementById("solutions");
+      if (solutionsSection) {
+        solutionsSection.scrollIntoView({ behavior: "smooth", block: "start" });
 
         // Dispatch custom event to update module selection
         setTimeout(() => {

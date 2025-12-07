@@ -13,15 +13,15 @@ const Footer = () => {
   const footerLinks = {
     product: [
       { name: "Features", href: "#features" },
-      { name: "Modules", href: "#modules" },
+      { name: "Solutions", href: "#solutions" },
       { name: "Pricing", href: "#pricing" },
       { name: "Security", href: "#security" },
       { name: "Integrations", href: "#integrations" },
     ],
     company: [
-      { name: "About Us", href: "#about" },
+      { name: "About Us", href: "/about" },
       { name: "Careers", href: "#careers" },
-      { name: "Blog", href: "#blog" },
+      { name: "Blog", href: "/blogs" },
       { name: "Press", href: "#press" },
       { name: "Contact", href: "#contact" },
     ],

@@ -8,7 +8,6 @@ import EcosystemSection from "./components/EcosystemSection";
 import Features from "./components/Features";
 import UseCases from "./components/UseCases";
 import IntegrationPartners from "./components/IntegrationPartners";
-import Resources from "./components/Resources";
 import LiveChatWidget from "./components/LiveChatWidget";
 import ModulesShowcase from "./components/ModulesShowcase";
 import Statistics from "./components/Statistics";
@@ -74,20 +73,15 @@ export default function Home() {
         {/* Integration Partners Section */}
         <IntegrationPartners />
 
-        {/* Resources Section */}
-        <Resources />
-
-        {/* Modules Showcase */}
+        {/* Solutions Showcase */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2, margin: "0px 0px -100px 0px" }}
-          transition={{ duration: 0.4, ease: "easeOut" }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4 }}
         >
           <ModulesShowcase />
-        </motion.div>
-
-        {/* Statistics */}
+        </motion.div>        {/* Statistics */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
